@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy import create_engine
@@ -17,10 +17,10 @@ class Knowledge(Base):
 	arc_id = Column(Integer, primary_key=True)
 	arc_topic = Column(String)
 	arc_title = Column(String)
-	arc_rate = Column(Integer)
+	arc_rate = Column(Float)
 
 	def __repr__(self):
-		if self.arc_rate > 7:
+		if 1:#self.arc_rate > 7:
 			return ("If you want to learn about {}, you should look at the Wikipedia article called {}. We gave this article a rating of {} out of 10! The ID of this instance is {}").format(
 						self.arc_topic,
 						self.arc_title,
